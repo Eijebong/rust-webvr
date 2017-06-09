@@ -82,9 +82,9 @@ impl<'a> JNIScope<'a> {
 impl<'a> Drop for JNIScope<'a> {
     // Autodetach JNI thread
     fn drop(&mut self) {
-        unsafe {
+        /*unsafe {
             let vmf: &ndk::JNIInvokeInterface = mem::transmute(self.vm.functions);
             (vmf.DetachCurrentThread)(self.vm);
-        }
+        }*/
     }
 }
