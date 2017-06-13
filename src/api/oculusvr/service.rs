@@ -76,7 +76,11 @@ impl VRService for OculusVRService {
     }
 
     fn poll_events(&self) -> Vec<VREvent> {
-        Vec::new()
+        let mut events = Vec::new();
+        for display in &self.displays {
+            display.borrow_mut().poll_events(&mut events);
+        }
+        events
     }
 }
 
